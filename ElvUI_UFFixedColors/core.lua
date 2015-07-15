@@ -17,6 +17,7 @@ local frames = {
 }
 
 local function FramePostUpdate(self, unit, min, max)
+	if unit == "vehicle" then unit = "player" end
 	local db = UF.db['units'][unit]
 	if not db.uff.enabled then return end
 	local upper = db.uff.upper
