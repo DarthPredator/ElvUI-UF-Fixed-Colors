@@ -73,8 +73,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('player');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.player.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.player.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('player'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -83,7 +91,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.player.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('player'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -156,8 +164,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('pet');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.pet.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.pet.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('pet'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -166,7 +182,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.pet.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('pet'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -239,8 +255,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('pettarget');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.pettarget.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.pettarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('pettarget'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -249,7 +273,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.pettarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('pettarget'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -322,8 +346,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('target');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.target.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.target.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('target'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -332,7 +364,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.target.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('target'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -405,8 +437,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('targettarget');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.targettarget.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.targettarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('targettarget'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -415,7 +455,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.targettarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('targettarget'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -488,8 +528,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('focus');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.focus.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.focus.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('focus'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -498,7 +546,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.focus.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('focus'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -571,8 +619,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUF('focustarget');
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.focustarget.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.focustarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('focustarget'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -581,7 +637,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.focustarget.uff[ info[#info] ] = value; UF:CreateAndUpdateUF('focustarget'); end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -654,8 +710,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateHeaderGroup('party')
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.party.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.party.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('party'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -664,7 +728,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.party.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('party') end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -737,8 +801,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateHeaderGroup('raid')
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.raid.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.raid.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('raid'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -747,7 +819,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.raid.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('raid') end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -820,8 +892,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateHeaderGroup('raid40')
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.raid40.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.raid40.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('raid40'); end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -830,7 +910,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.raid40.uff[ info[#info] ] = value; UF:CreateAndUpdateHeaderGroup('raid40') end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -986,8 +1066,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUFGroup('boss', MAX_BOSS_FRAMES)
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.boss.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.boss.uff[ info[#info] ] = value; UF:CreateAndUpdateUFGroup('boss', MAX_BOSS_FRAMES) end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -996,7 +1084,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.boss.uff[ info[#info] ] = value; UF:CreateAndUpdateUFGroup('boss', MAX_BOSS_FRAMES) end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -1069,8 +1157,16 @@ function UFF:GetOptions()
 							UF:CreateAndUpdateUFGroup('arena', 5)
 						end,
 					},
-					upper = {
+					onlylower = {
+						type = 'toggle',
 						order = 5,
+						name = L["Only Lower"],
+						desc = L["Use only lower breakpoint and use bad color when health is below it."],
+						get = function(info) return E.db.unitframe.units.arena.uff[ info[#info] ] end,
+						set = function(info, value) E.db.unitframe.units.arena.uff[ info[#info] ] = value; UF:CreateAndUpdateUFGroup('arena', 5) end,
+					},
+					upper = {
+						order = 6,
 						name = L["Upper breakpoint"],
 						type = "range",
 						isPercent = true,
@@ -1079,7 +1175,7 @@ function UFF:GetOptions()
 						set = function(info, value) E.db.unitframe.units.arena.uff[ info[#info] ] = value; UF:CreateAndUpdateUFGroup('arena', 5) end,
 					},
 					lower = {
-						order = 6,
+						order = 7,
 						name = L["Lower breakpoint"],
 						type = "range",
 						isPercent = true,

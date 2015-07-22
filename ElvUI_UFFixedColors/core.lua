@@ -19,20 +19,27 @@ local frames = {
 local function FramePostUpdate(self, unit, min, max)
 	if unit == "vehicle" then unit = "player" end
 	local db = UF.db['units'][unit]
-	if not db.uff.enabled then return end
+	if not db or not db.uff.enabled then return end
 	local upper = db.uff.upper
 	local lower = db.uff.lower
 	if upper < lower then upper = .75; lower = .3 end
 	local point = min/max
 	local color
-	if point >= upper then
-		color = db.uff.good
-	elseif point >= lower and point < upper then
-		color = db.uff.neutral
+	if db.uff.onlylower then
+		if point < lower then
+			color = db.uff.bad
+			self:SetStatusBarColor(color.r, color.g, color.b)
+		end
 	else
-		color = db.uff.bad
+		if point >= upper then
+			color = db.uff.good
+		elseif point >= lower and point < upper then
+			color = db.uff.neutral
+		else
+			color = db.uff.bad
+		end
+		self:SetStatusBarColor(color.r, color.g, color.b)
 	end
-	self:SetStatusBarColor(color.r, color.g, color.b)
 end
 
 local groups = {
@@ -62,14 +69,21 @@ local function GroupPostUpdate(self, unit, min, max)
 	if upper < lower then upper = .75; lower = .3 end
 	local point = min/max
 	local color
-	if point >= upper then
-		color = db.uff.good
-	elseif point >= lower and point < upper then
-		color = db.uff.neutral
+	if db.uff.onlylower then
+		if point < lower then
+			color = db.uff.bad
+			self:SetStatusBarColor(color.r, color.g, color.b)
+		end
 	else
-		color = db.uff.bad
+		if point >= upper then
+			color = db.uff.good
+		elseif point >= lower and point < upper then
+			color = db.uff.neutral
+		else
+			color = db.uff.bad
+		end
+		self:SetStatusBarColor(color.r, color.g, color.b)
 	end
-	self:SetStatusBarColor(color.r, color.g, color.b)
 end
 
 function UFF:Initialize()
