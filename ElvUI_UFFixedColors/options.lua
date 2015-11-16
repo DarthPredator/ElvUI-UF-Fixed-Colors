@@ -1,6 +1,7 @@
 local E, L, V, P, G = unpack(ElvUI);
 local UFF = E:GetModule("UF_FixedColors")
 local UF = E:GetModule('UnitFrames')
+local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
 
 function UFF:GetOptions()
 	E.Options.args.unitframe.args.UFF = {

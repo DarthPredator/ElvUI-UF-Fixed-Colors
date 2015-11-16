@@ -4,7 +4,10 @@ local EP = LibStub("LibElvUIPlugin-1.0")
 local UFF = E:NewModule("UF_FixedColors", 'AceHook-3.0')
 local addon = ...
 
+local _G = _G
 local find = string.find
+local upper = string.upper
+local select, pairs, random = select, pairs, random
 
 local frames = {
 	ElvUF_Player,
@@ -55,7 +58,7 @@ local function GroupPostUpdate(self, unit, min, max)
 	local parent = self:GetParent()
 	local header
 	for i = 1, #groups do
-		if parent:GetName():find(groups[i]:gsub("^%l", string.upper)) then header = groups[i]; break end
+		if parent:GetName():find(groups[i]:gsub("^%l", upper)) then header = groups[i]; break end
 	end
 	if not header then return end
 	local db = UF.db['units'][header]
@@ -107,7 +110,7 @@ function UFF:Initialize()
 	end
 
 	for name, header in pairs(UF.groupunits) do
-		local frame = _G["ElvUF_"..name:gsub("^%l", string.upper)]
+		local frame = _G["ElvUF_"..name:gsub("^%l", upper)]
 		if frame and frame.Health then
 			hooksecurefunc(frame.Health, "PostUpdate", function(self, unit, min, max) GroupPostUpdate(self, unit, min, max) end)
 		end
