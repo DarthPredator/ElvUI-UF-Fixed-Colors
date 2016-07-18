@@ -4,10 +4,12 @@ local EP = LibStub("LibElvUIPlugin-1.0")
 local UFF = E:NewModule("UF_FixedColors", 'AceHook-3.0')
 local addon = ...
 
+--GLOBALS: hooksecurefunc
 local _G = _G
-local find = string.find
-local upper = string.upper
-local select, pairs, random = select, pairs, random
+local find, upper = string.find, string.upper
+local select, pairs = select, pairs
+local random = random
+local gsub = gsub
 
 local frames = {
 	ElvUF_Player,
