@@ -1,6 +1,6 @@
-## Interface: 70000
+## Interface: 70300
 ## Author: Darth Predator
-## Version: 1.02
+## Version: 1.03
 ## Title: |cff1784d1ElvUI|r Unitframes Fixed Colors
 ## Notes: A plugin to set constant colors on health breakpoints
 ## RequiredDeps: ElvUI
