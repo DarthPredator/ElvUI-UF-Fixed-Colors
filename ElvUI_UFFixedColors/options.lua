@@ -1,4 +1,5 @@
-local E, L, V, P, G = unpack(ElvUI);
+local E, _, V, P, G = unpack(ElvUI);
+local L = E.Libs.ACL:GetLocale('ElvUI', E.global.general.locale or 'enUS')
 local UFF = E:GetModule("UF_FixedColors")
 local UF = E:GetModule('UnitFrames')
 local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
