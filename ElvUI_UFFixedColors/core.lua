@@ -21,14 +21,16 @@ local frames = {
 	ElvUF_FocusTarget,
 }
 
-local function FramePostUpdate(self, unit, min, max)
+local function FramePostUpdate(self, unit, ...)
 	if unit == "vehicle" then unit = "player" end
 	local db = UF.db['units'][unit]
 	if not db or not db.uff.enabled then return end
 	local upper = db.uff.upper
 	local lower = db.uff.lower
 	if upper < lower then upper = .75; lower = .3 end
-	local point = min/max
+	local cur = self:GetValue()
+	local min, max = self:GetMinMaxValues()
+	local point = cur/max
 	local color
 	if db.uff.onlylower then
 		if point < lower then
@@ -44,7 +46,6 @@ local function FramePostUpdate(self, unit, min, max)
 			color = db.uff.bad
 		end
 		self:SetStatusBarColor(color.r, color.g, color.b)
-		print("Hmmmmm")
 	end
 end
 
@@ -57,7 +58,7 @@ local groups = {
 	"raid",
 }
 
-local function GroupPostUpdate(self, unit, min, max)
+local function GroupPostUpdate(self, unit, ...)
 	local parent = self:GetParent()
 	local header
 	for i = 1, #groups do
@@ -68,12 +69,14 @@ local function GroupPostUpdate(self, unit, min, max)
 	if not db.uff.enabled then return end
 	local upper = db.uff.upper
 	local lower = db.uff.lower
+	local cur = self:GetValue()
+	local min, max = self:GetMinMaxValues()
 	if parent.isForced then
-		min = random(1, max or 100)
-		self:SetValue(min)
+		cur = random(1, max or 100)
+		self:SetValue(cur)
 	end
 	if upper < lower then upper = .75; lower = .3 end
-	local point = min/max
+	local point = max > 0 and cur/max or 0
 	local color
 	if db.uff.onlylower then
 		if point < lower then
@@ -95,7 +98,6 @@ end
 function UFF:Initialize()
 	if not E.private.unitframe.enable then return end
 	for i = 1, #frames do
-		-- hooksecurefunc(frames[i].Health, "PostUpdate", FramePostUpdate)
 		hooksecurefunc(frames[i].Health, "PostUpdateColor", FramePostUpdate)
 	end
 
@@ -106,8 +108,7 @@ function UFF:Initialize()
 				for j = 1, group:GetNumChildren() do
 					local frame = select(j, group:GetChildren())
 					if frame and frame.Health then
-						-- hooksecurefunc(frame.Health, "PostUpdate", function(self, unit, min, max) GroupPostUpdate(self, unit, min, max) end)
-						hooksecurefunc(frame.Health, "PostUpdateColor", function(self, unit, min, max) GroupPostUpdate(self, unit, min, max) end)
+						hooksecurefunc(frame.Health, "PostUpdateColor", function(self, unit, ...) GroupPostUpdate(self, unit, ...) end)
 					end
 				end
 			end
@@ -117,8 +118,7 @@ function UFF:Initialize()
 	for name, header in pairs(UF.groupunits) do
 		local frame = _G["ElvUF_"..name:gsub("^%l", upper)]
 		if frame and frame.Health then
-			-- hooksecurefunc(frame.Health, "PostUpdate", function(self, unit, min, max) GroupPostUpdate(self, unit, min, max) end)
-			hooksecurefunc(frame.Health, "PostUpdateColor", function(self, unit, min, max) GroupPostUpdate(self, unit, min, max) end)
+			hooksecurefunc(frame.Health, "PostUpdateColor", function(self, unit, ...) GroupPostUpdate(self, unit, ...) end)
 		end
 	end
 	EP:RegisterPlugin(addon, UFF.GetOptions)
